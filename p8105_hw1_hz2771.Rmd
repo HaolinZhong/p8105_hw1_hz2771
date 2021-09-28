@@ -190,6 +190,11 @@ figure = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm,
 show(figure)
 ```
 
+## Save the plot
+
+```{r, warning = FALSE}
+ggsave("penguins_bill_flipper.jpg")
+```
 
 
 
