@@ -33,25 +33,29 @@ example_df = tibble(
 mean(pull(example_df, random_samples))
 ```
 
-- `mean()` works for the column `random_samples`, whose data type is `r class(pull(example_df, random_samples))`.
+- `mean()` works for the column `random_samples`, whose data type is 
+`r class(pull(example_df, random_samples))`.
 
 ```{r}
 mean(pull(example_df, sample_gt_0))
 ```
 
-- `mean()` works for the column `sample_gt_0`, whose data type is `r class(pull(example_df, sample_gt_0))`.
+- `mean()` works for the column `sample_gt_0`, 
+whose data type is `r class(pull(example_df, sample_gt_0))`.
 
 ```{r}
 mean(pull(example_df, chs))
 ```
 
-- `mean()` doesn't work for the column `chs`, whose data type is `r class(pull(example_df, chs))`.
+- `mean()` doesn't work for the column `chs`, whose data type is 
+`r class(pull(example_df, chs))`.
 
 ```{r}
 mean(pull(example_df, fct))
 ```
 
-- `mean()` doesn't work for the column `fct`, whose data type is `r class(pull(example_df, fct))`.
+- `mean()` doesn't work for the column `fct`, whose data type is 
+`r class(pull(example_df, fct))`.
 
 
 ## Try to use as.numeric() to convert logical, character and factor variables
@@ -62,21 +66,110 @@ as.numeric(pull(example_df, chs))
 as.numeric(pull(example_df, fct))
 ```
 
-- For the logical variable `sample_gt_0`, the output is consist of 0 and 1. This is because the logical variable was converted to 1 for `TRUE` and 0 for `FALSE`. 
+- For the logical variable `sample_gt_0`, the output is consist of 0 and 1. 
+This is because the logical variable was converted to 1 for `TRUE` and 0 
+for `FALSE`. 
 
-- For the character variable `chs`, the output is 10 NA. This is because a `character` value couldn't be converted to meaningful `numeric` value in R.
+- For the character variable `chs`, the output is 10 NA. This is because a 
+`character` value couldn't be converted to meaningful `numeric` value in R.
 
-- For the factor variable `fct`, the output is consist of 1, 2, and 3. This is because these factor values are ordinal and they were converted to numeric values according to their corresponding level (1 for `low`, 2 for `mid`, 3 for `high`).
+- For the factor variable `fct`, the output is consist of 1, 2, and 3. This is 
+because these factor values are ordinal and they were converted to numeric 
+values according to their corresponding level (1 for `low`, 2 for `mid`,
+3 for `high`).
 
-- This partially helps to explain that why we can use `mean()` on logical variables but not character variables. In `mean()`, `TRUE` is also regarded as 1 and `FALSE` is regarded as 0. And `mean()` also don't know how to convert character variables. The factor variable, although is supported by `as.numeric()`, is not supported by `mean()`, because `mean()` only takes numeric/logical vectors and date, date-time and time interval objects.
+- This partially helps to explain that why we can use `mean()` on logical 
+variables but not character variables. In `mean()`, `TRUE` is also regarded 
+as 1 and `FALSE` is regarded as 0. And `mean()` also don't know how to convert 
+character variables. The factor variable, although is supported by 
+`as.numeric()`, is not supported by `mean()`, because `mean()` only takes 
+numeric/logical vectors and date, date-time and time interval objects.
 
 
 # Problem 2
 
 ## load the peguin dataset
+
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
 
 
+## describe the dataset
 
+- This dataset contains `r length(colnames(penguins))` variables, which are: 
+`r colnames(penguins)`.
+
+    - `species`: This variable is a `r class(pull(penguins, species))` variable. 
+    It contains `r sum(is.na(pull(penguins, species)))` missing value(s). It is
+    `r if (!is.ordered(pull(penguins, species))) 'not'` ordinal, and has 
+    `r length(levels(pull(penguins, species)))` categories: 
+    `r levels(pull(penguins, species))`, which have 
+    `r summary(pull(penguins, species)[!is.na(pull(penguins, sex))])` 
+    records respectively.
+    
+    - `island`: This variable is a `r class(pull(penguins, island))` variable. 
+    It contains `r sum(is.na(pull(penguins, island)))` missing value(s). It is
+    `r if (!is.ordered(pull(penguins, island))) 'not'` ordinal, and has 
+    `r length(levels(pull(penguins, island)))` categories: 
+    `r levels(pull(penguins, island))`, which have 
+    `r summary(pull(penguins, island)[!is.na(pull(penguins, island))])` 
+    records respectively.
+
+    - `sex`: This variable is a `r class(pull(penguins, sex))` variable. 
+    It contains `r sum(is.na(pull(penguins, sex)))` missing value(s). It is
+    `r if (!is.ordered(pull(penguins, sex))) 'not'` ordinal, and has 
+    `r length(levels(pull(penguins, sex)))` categories: 
+    `r levels(pull(penguins, sex))`, which have 
+    `r summary(pull(penguins, sex)[!is.na(pull(penguins, sex))])` 
+    records respectively.
+    
+    - `bill_length_mm`: This variable is a 
+    `r class(pull(penguins, bill_length_mm))` variable. It contains 
+    `r sum(is.na(pull(penguins, bill_length_mm)))` missing value(s). 
+    For this variable, the mean is 
+    `r round(mean(pull(penguins, bill_length_mm), na.rm = TRUE), 2)`, 
+    the standard deviation is 
+    `r round(sd(pull(penguins, bill_length_mm), na.rm = TRUE), 2)`. 
+    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    `r round(quantile(pull(penguins, bill_length_mm), na.rm = TRUE), 2)`.
+    
+    - `bill_depth_mm`: This variable is a 
+    `r class(pull(penguins, bill_depth_mm))` variable. It contains 
+    `r sum(is.na(pull(penguins, bill_depth_mm)))` missing value(s). 
+    For this variable, the mean is 
+    `r round(mean(pull(penguins, bill_depth_mm), na.rm = TRUE), 2)`, 
+    the standard deviation is 
+    `r round(sd(pull(penguins, bill_depth_mm), na.rm = TRUE), 2)`. 
+    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    `r round(quantile(pull(penguins, bill_depth_mm), na.rm = TRUE), 2)`.
+    
+    - `flipper_length_mm`: This variable is a 
+    `r class(pull(penguins, flipper_length_mm))` variable. It contains 
+    `r sum(is.na(pull(penguins, flipper_length_mm)))` missing value(s). 
+    For this variable, the mean is 
+    `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`, 
+    the standard deviation is 
+    `r round(sd(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`. 
+    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    `r round(quantile(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`.
+    
+    - `body_mass_g`: This variable is a 
+    `r class(pull(penguins, body_mass_g))` variable. It contains 
+    `r sum(is.na(pull(penguins, body_mass_g)))` missing value(s). 
+    For this variable, the mean is 
+    `r round(mean(pull(penguins, body_mass_g), na.rm = TRUE), 2)`, 
+    the standard deviation is 
+    `r round(sd(pull(penguins, body_mass_g), na.rm = TRUE), 2)`. 
+    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    `r round(quantile(pull(penguins, body_mass_g), na.rm = TRUE), 2)`.
+    
+    - `year`: This variable is a 
+    `r class(pull(penguins, year))` variable. It contains 
+    `r sum(is.na(pull(penguins, year)))` missing value(s). 
+    For this variable, the mean is 
+    `r round(mean(pull(penguins, year), na.rm = TRUE), 2)`, 
+    the standard deviation is 
+    `r round(sd(pull(penguins, year), na.rm = TRUE), 2)`. 
+    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    `r round(quantile(pull(penguins, year), na.rm = TRUE), 2)`.
