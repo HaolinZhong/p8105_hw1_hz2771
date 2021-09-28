@@ -4,3 +4,24 @@ author: 'Haolin Zhong (UNI: hz2771)'
 date: "2021/9/28"
 output: github_document
 ---
+
+
+```{r, message=FALSE}
+library(tidyverse)
+library(tibble)
+library(ggplot2)
+```
+
+
+# Problem 1
+
+## Create the dataframe
+
+```{r}
+example_df = tibble(
+  random_samples = rnorm(10),
+  sample_gt_0 = random_samples > 0,
+  chs = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+  fct = factor(c("low", "low", "low", "mid", "mid", "mid",  "mid", "high", "high","high"), levels = c("low", "mid", "high"))
+)
+```
