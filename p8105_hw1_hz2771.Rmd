@@ -30,28 +30,28 @@ example_df = tibble(
 
 ## Take the mean of each variable
 
-```{r}
+```{r, warning = FALSE}
 mean(pull(example_df, random_samples))
 ```
 
 - `mean()` works for the column `random_samples`, whose data type is 
 `r class(pull(example_df, random_samples))`.
 
-```{r}
+```{r, warning = FALSE}
 mean(pull(example_df, sample_gt_0))
 ```
 
 - `mean()` works for the column `sample_gt_0`, 
 whose data type is `r class(pull(example_df, sample_gt_0))`.
 
-```{r}
+```{r, warning = FALSE}
 mean(pull(example_df, chs))
 ```
 
 - `mean()` doesn't work for the column `chs`, whose data type is 
 `r class(pull(example_df, chs))`.
 
-```{r}
+```{r, warning = FALSE}
 mean(pull(example_df, fct))
 ```
 
