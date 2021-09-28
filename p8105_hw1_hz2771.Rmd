@@ -25,3 +25,35 @@ example_df = tibble(
   fct = factor(c("low", "low", "low", "mid", "mid", "mid",  "mid", "high", "high","high"), levels = c("low", "mid", "high"))
 )
 ```
+
+
+## Take the mean of each variable
+
+```{r}
+mean(pull(example_df, random_samples))
+```
+
+- `mean()` works for the column `random_samples`, whose data type is `r class(pull(example_df, random_samples))`.
+
+```{r}
+mean(pull(example_df, sample_gt_0))
+```
+
+- `mean()` works for the column `sample_gt_0`, whose data type is `r class(pull(example_df, sample_gt_0))`.
+
+```{r}
+mean(pull(example_df, chs))
+```
+
+- `mean()` doesn't work for the column `chs`, whose data type is `r class(pull(example_df, chs))`.
+
+```{r}
+mean(pull(example_df, fct))
+```
+
+- `mean()` doesn't work for the column `fct`, whose data type is `r class(pull(example_df, fct))`.
+
+
+
+
+
