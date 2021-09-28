@@ -69,3 +69,14 @@ as.numeric(pull(example_df, fct))
 - For the factor variable `fct`, the output is consist of 1, 2, and 3. This is because these factor values are ordinal and they were converted to numeric values according to their corresponding level (1 for `low`, 2 for `mid`, 3 for `high`).
 
 - This partially helps to explain that why we can use `mean()` on logical variables but not character variables. In `mean()`, `TRUE` is also regarded as 1 and `FALSE` is regarded as 0. And `mean()` also don't know how to convert character variables. The factor variable, although is supported by `as.numeric()`, is not supported by `mean()`, because `mean()` only takes numeric/logical vectors and date, date-time and time interval objects.
+
+
+# Problem 2
+
+## load the peguin dataset
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+
+
