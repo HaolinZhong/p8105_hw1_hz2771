@@ -132,7 +132,7 @@ data("penguins", package = "palmerpenguins")
     `r round(mean(pull(penguins, bill_length_mm), na.rm = TRUE), 2)`, 
     the standard deviation is 
     `r round(sd(pull(penguins, bill_length_mm), na.rm = TRUE), 2)`. 
-    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    The 0th, 25th, 50th,  75th, 100th percentile values are: 
     `r round(quantile(pull(penguins, bill_length_mm), na.rm = TRUE), 2)`.
     
     - `bill_depth_mm`: This variable is a 
@@ -142,7 +142,7 @@ data("penguins", package = "palmerpenguins")
     `r round(mean(pull(penguins, bill_depth_mm), na.rm = TRUE), 2)`, 
     the standard deviation is 
     `r round(sd(pull(penguins, bill_depth_mm), na.rm = TRUE), 2)`. 
-    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    The 0th, 25th, 50th,  75th, 100th percentile values are: 
     `r round(quantile(pull(penguins, bill_depth_mm), na.rm = TRUE), 2)`.
     
     - `flipper_length_mm`: This variable is a 
@@ -152,7 +152,7 @@ data("penguins", package = "palmerpenguins")
     `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`, 
     the standard deviation is 
     `r round(sd(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`. 
-    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    The 0th, 25th, 50th,  75th, 100th percentile values are: 
     `r round(quantile(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`.
     
     - `body_mass_g`: This variable is a 
@@ -162,7 +162,7 @@ data("penguins", package = "palmerpenguins")
     `r round(mean(pull(penguins, body_mass_g), na.rm = TRUE), 2)`, 
     the standard deviation is 
     `r round(sd(pull(penguins, body_mass_g), na.rm = TRUE), 2)`. 
-    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    The 0th, 25th, 50th,  75th, 100th percentile values are: 
     `r round(quantile(pull(penguins, body_mass_g), na.rm = TRUE), 2)`.
     
     - `year`: This variable is a 
@@ -172,7 +172,7 @@ data("penguins", package = "palmerpenguins")
     `r round(mean(pull(penguins, year), na.rm = TRUE), 2)`, 
     the standard deviation is 
     `r round(sd(pull(penguins, year), na.rm = TRUE), 2)`. 
-    The 0th,25th, 50th, 75th, 100th percentile values are: 
+    The 0th, 25th, 50th,  75th, 100th percentile values are: 
     `r round(quantile(pull(penguins, year), na.rm = TRUE), 2)`.
 
 - This dataset has `r ncol(penguins)` columns and `r nrow(penguins)` rows.
