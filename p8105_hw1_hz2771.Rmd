@@ -5,6 +5,7 @@ date: "2021/9/28"
 output: github_document
 ---
 
+## Import required packages
 
 ```{r, message=FALSE}
 library(tidyverse)
@@ -88,14 +89,14 @@ numeric/logical vectors and date, date-time and time interval objects.
 
 # Problem 2
 
-## load the peguin dataset
+## Load the peguin dataset
 
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
 
 
-## describe the dataset
+## Describe the dataset
 
 - This dataset contains `r length(colnames(penguins))` variables, which are: 
 `r colnames(penguins)`.
@@ -178,4 +179,27 @@ data("penguins", package = "palmerpenguins")
 
 - The mean flipper length in this dataset is 
 `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
+
+
+## Draw the scatter plot
+
+```{r, warning = FALSE}
+figure = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, 
+                              color = species)) +
+         geom_point()
+show(figure)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
