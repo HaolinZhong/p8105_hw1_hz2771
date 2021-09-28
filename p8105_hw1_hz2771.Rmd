@@ -173,3 +173,9 @@ data("penguins", package = "palmerpenguins")
     `r round(sd(pull(penguins, year), na.rm = TRUE), 2)`. 
     The 0th,25th, 50th, 75th, 100th percentile values are: 
     `r round(quantile(pull(penguins, year), na.rm = TRUE), 2)`.
+
+- This dataset has `r ncol(penguins)` columns and `r nrow(penguins)` rows.
+
+- The mean flipper length in this dataset is 
+`r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
+
